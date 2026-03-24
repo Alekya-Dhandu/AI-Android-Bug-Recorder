@@ -1,0 +1,41 @@
+=====================================
+  AI BUG RECORDER — Bug Report
+  Generated: 3/24/2026, 6:43:39 PM
+=====================================
+
+TITLE:
+  NumberFormatException in SeriesDetailActivity when parsing empty string
+
+SUMMARY:
+  The TV2Z app crashed with a NumberFormatException while trying to parse an empty string to an integer in the SeriesDetailActivity. This occurred during a Firebase analytics event posting operation, likely when processing series metadata.
+
+STEPS TO REPRODUCE:
+  1. Step 1: Launch TV2Z app on Android TV
+  2. Step 2: Navigate to series detail view
+  3. Step 3: App attempts to post Firebase analytics event with series data
+
+EXPECTED RESULT:
+  The app should successfully parse series metadata and post analytics events without crashing
+
+ACTUAL RESULT:
+  The app threw a NumberFormatException when trying to parse an empty string value, causing a crash in the series detail view
+
+ERROR SUMMARY:
+  • java.lang.NumberFormatException: For input string: "" at Integer.parseInt
+• Error occurred in SeriesDetailActivity.postFirebaseEvent at line 1640
+• Multiple C2VencHCodec frame rate change errors indicating video codec issues
+
+ROOT CAUSE (AI hypothesis):
+  The app is attempting to parse an empty string to an integer in the postFirebaseEvent method, likely due to missing or improperly initialized series metadata that should contain numeric values.
+
+DEVICE INFO:
+  Brand / Model : TV2ZPlay TV2Z Play One
+  Android       : 14 (API 34)
+  Resolution    : 1920x1080
+  Serial        : 192.168.2.97:5555
+
+ATTACHMENTS:
+  Video : C:\Users\AlekyaDhandu\Documents\AI Android Bug Recorder\output\recording_1774358019419.mp4
+  Logs  : C:\Users\AlekyaDhandu\Documents\AI Android Bug Recorder\output\logcat_1774358019419.txt
+
+=====================================

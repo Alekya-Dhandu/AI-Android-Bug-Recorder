@@ -1,0 +1,259 @@
+--------- beginning of main
+03-24 18:43:38.965 W/MediaProvider( 1511): isAppCloneUserPair for user 0: false
+03-24 18:43:39.001 W/ColorUtils(29956): expected specified color aspects (0:0:0:0)
+03-24 18:43:39.010 W/ColorUtils(29956): expected specified color aspects (0:0:0:0)
+03-24 18:43:39.013 W/ColorUtils(29956): expected specified color aspects (0:0:0:0)
+03-24 18:43:39.015 E/C2VencHCodec(  475): [##1##]"cannot support colorformat:22"
+03-24 18:43:39.029 W/ResourceManagerService(  590): Ignoring request to add new resource entry with value <= 0
+03-24 18:43:39.040 W/MediaProvider( 1511): isAppCloneUserPair for user 0: false
+03-24 18:43:39.046 W/SurfaceFlinger(  274): Invalid layer stack -1
+03-24 18:43:39.083 E/C2VencComponent(  475): applied 2 configUpdates => BAD_INDEX (6)
+--------- beginning of kernel
+03-24 18:43:39.748 W/[3 T960   ..] RTW(    0): cfg80211_rtw_get_channel(wlan0) link_id:0
+03-24 18:43:39.748 W/[3 T960   ..] RTW(    0): cfg80211_rtw_get_txpower
+03-24 18:43:39.740 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:39.803 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:39.803 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:39.804 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:39.804 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:39.889 E/CellBroadcastUtils(  680): getDefaultCellBroadcastReceiverPackageName: no package found
+03-24 18:43:39.892 E/audio_hw_hal_virtualbuf(  467): ms12 system input underrun happens read=139556363192 write=17160000000 diff=122396363192
+--------- beginning of system
+03-24 18:43:39.899 E/Transition(  680): Trying to add a ready-group twice: Display{#0 state=ON size=1920x1080 ROTATION_0}
+03-24 18:43:39.948 E/C2VencHCodec(  475): [##1##]"frame_rate change to :1"
+03-24 18:43:39.969 E/C2VencHCodec(  475): [##1##]"frame_rate change to :38"
+03-24 18:43:40.456 E/LogUtils(12104):  null
+03-24 18:43:40.641 W/WindowOnBackDispatcher(12104): OnBackInvokedCallback is not enabled for the application.
+03-24 18:43:40.641 W/WindowOnBackDispatcher(12104): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-24 18:43:40.708 E/OpenGLRenderer(12104): Unable to match the desired swap behavior.
+03-24 18:43:40.754 E/C2VencHCodec(  475): [##1##]"frame_rate change to :1"
+03-24 18:43:40.775 E/C2VencHCodec(  475): [##1##]"frame_rate change to :57"
+03-24 18:43:40.784 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:40.795 E/C2VencHCodec(  475): [##1##]"frame_rate change to :68"
+03-24 18:43:40.815 E/C2VencHCodec(  475): [##1##]"frame_rate change to :60"
+03-24 18:43:40.847 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:40.847 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:40.848 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:40.848 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:40.841 E/C2VencHCodec(  475): [##1##]"frame_rate change to :45"
+03-24 18:43:40.870 E/C2VencHCodec(  475): [##1##]"frame_rate change to :57"
+03-24 18:43:40.895 E/C2VencHCodec(  475): [##1##]"frame_rate change to :33"
+03-24 18:43:40.922 E/C2VencHCodec(  475): [##1##]"frame_rate change to :87"
+03-24 18:43:40.947 E/C2VencHCodec(  475): [##1##]"frame_rate change to :45"
+03-24 18:43:40.971 E/C2VencHCodec(  475): [##1##]"frame_rate change to :117"
+03-24 18:43:41.001 E/C2VencHCodec(  475): [##1##]"frame_rate change to :47"
+03-24 18:43:41.024 E/C2VencHCodec(  475): [##1##]"frame_rate change to :111"
+03-24 18:43:41.049 E/C2VencHCodec(  475): [##1##]"frame_rate change to :69"
+03-24 18:43:41.073 E/C2VencHCodec(  475): [##1##]"frame_rate change to :38"
+03-24 18:43:41.104 E/C2VencHCodec(  475): [##1##]"frame_rate change to :111"
+03-24 18:43:41.127 E/C2VencHCodec(  475): [##1##]"frame_rate change to :68"
+03-24 18:43:41.152 E/C2VencHCodec(  475): [##1##]"frame_rate change to :36"
+03-24 18:43:41.177 E/C2VencHCodec(  475): [##1##]"frame_rate change to :118"
+03-24 18:43:41.206 E/C2VencHCodec(  475): [##1##]"frame_rate change to :69"
+03-24 18:43:41.230 W/System.err(12104): java.lang.NumberFormatException: For input string: ""
+03-24 18:43:41.230 W/System.err(12104): 	at java.lang.Integer.parseInt(Integer.java:807)
+03-24 18:43:41.230 W/System.err(12104): 	at java.lang.Integer.parseInt(Integer.java:915)
+03-24 18:43:41.231 W/System.err(12104): 	at com.studio.androidtv.presentation.activities.SeriesDetailActivity.postFirebaseEvent(SeriesDetailActivity.kt:1640)
+03-24 18:43:41.231 W/System.err(12104): 	at com.studio.androidtv.presentation.activities.SeriesDetailActivity.setUpObservers$lambda$0(SeriesDetailActivity.kt:472)
+03-24 18:43:41.231 W/System.err(12104): 	at com.studio.androidtv.presentation.activities.SeriesDetailActivity.$r8$lambda$HcxWSV-p8y75Xo_yTwi1WfFpqyg(Unknown Source:0)
+03-24 18:43:41.231 W/System.err(12104): 	at com.studio.androidtv.presentation.activities.SeriesDetailActivity$$ExternalSyntheticLambda0.invoke(D8$$SyntheticClass:0)
+03-24 18:43:41.231 W/System.err(12104): 	at com.studio.androidtv.presentation.activities.SeriesDetailActivity$sam$androidx_lifecycle_Observer$0.onChanged(Unknown Source:2)
+03-24 18:43:41.232 W/System.err(12104): 	at com.studio.androidtv.utils.SingleLiveEvent.observe$lambda$0(SingleLiveEvent.kt:20)
+03-24 18:43:41.232 W/System.err(12104): 	at com.studio.androidtv.utils.SingleLiveEvent.$r8$lambda$Q5I08OFZg66ct9fXHi9Hwf7VeZI(Unknown Source:0)
+03-24 18:43:41.232 W/System.err(12104): 	at com.studio.androidtv.utils.SingleLiveEvent$$ExternalSyntheticLambda0.invoke(D8$$SyntheticClass:0)
+03-24 18:43:41.232 W/System.err(12104): 	at com.studio.androidtv.utils.SingleLiveEvent$sam$androidx_lifecycle_Observer$0.onChanged(Unknown Source:2)
+03-24 18:43:41.232 W/System.err(12104): 	at androidx.lifecycle.LiveData.considerNotify(LiveData.java:134)
+03-24 18:43:41.232 W/System.err(12104): 	at androidx.lifecycle.LiveData.dispatchingValue(LiveData.java:152)
+03-24 18:43:41.232 W/System.err(12104): 	at androidx.lifecycle.LiveData.setValue(LiveData.java:310)
+03-24 18:43:41.232 W/System.err(12104): 	at androidx.lifecycle.MutableLiveData.setValue(MutableLiveData.java:50)
+03-24 18:43:41.232 W/System.err(12104): 	at com.studio.androidtv.utils.SingleLiveEvent.setValue(SingleLiveEvent.kt:14)
+03-24 18:43:41.232 W/System.err(12104): 	at androidx.lifecycle.LiveData$1.run(LiveData.java:94)
+03-24 18:43:41.232 W/System.err(12104): 	at android.os.Handler.handleCallback(Handler.java:958)
+03-24 18:43:41.232 W/System.err(12104): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+03-24 18:43:41.233 W/System.err(12104): 	at android.os.Looper.loopOnce(Looper.java:205)
+03-24 18:43:41.233 E/C2VencHCodec(  475): [##1##]"frame_rate change to :35"
+03-24 18:43:41.236 W/System.err(12104): 	at android.os.Looper.loop(Looper.java:294)
+03-24 18:43:41.237 W/System.err(12104): 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+03-24 18:43:41.238 W/System.err(12104): 	at java.lang.reflect.Method.invoke(Native Method)
+03-24 18:43:41.238 W/System.err(12104): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+03-24 18:43:41.238 W/System.err(12104): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+03-24 18:43:41.255 E/C2VencHCodec(  475): [##1##]"frame_rate change to :103"
+03-24 18:43:41.280 E/C2VencHCodec(  475): [##1##]"frame_rate change to :85"
+03-24 18:43:41.302 E/C2VencHCodec(  475): [##1##]"frame_rate change to :35"
+03-24 18:43:41.311 W/PackageConfigPersister(  680): App-specific configuration not found for packageName: com.tv2z.stb and userId: 0
+03-24 18:43:41.327 E/C2VencHCodec(  475): [##1##]"frame_rate change to :105"
+03-24 18:43:41.349 E/C2VencHCodec(  475): [##1##]"frame_rate change to :61"
+03-24 18:43:41.371 E/C2VencHCodec(  475): [##1##]"frame_rate change to :41"
+03-24 18:43:41.393 E/C2VencHCodec(  475): [##1##]"frame_rate change to :104"
+03-24 18:43:41.415 E/C2VencHCodec(  475): [##1##]"frame_rate change to :34"
+03-24 18:43:41.434 E/C2VencHCodec(  475): [##1##]"frame_rate change to :77"
+03-24 18:43:41.454 E/C2VencHCodec(  475): [##1##]"frame_rate change to :36"
+03-24 18:43:41.474 E/C2VencHCodec(  475): [##1##]"frame_rate change to :121"
+03-24 18:43:41.494 E/C2VencHCodec(  475): [##1##]"frame_rate change to :67"
+03-24 18:43:41.516 E/C2VencHCodec(  475): [##1##]"frame_rate change to :28"
+03-24 18:43:41.829 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:41.899 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:41.899 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:41.900 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:41.900 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:42.243 W/PackageConfigPersister(  680): App-specific configuration not found for packageName: com.tv2z.stb and userId: 0
+03-24 18:43:42.273 E/C2VencHCodec(  475): [##1##]"frame_rate change to :1"
+03-24 18:43:42.294 E/C2VencHCodec(  475): [##1##]"frame_rate change to :65"
+03-24 18:43:42.477 W/C2BqBuffer(  475): last successful dequeue was 638065959 us ago, 0 consecutive failures
+03-24 18:43:42.751 W/[2 T960   ..] RTW(    0): cfg80211_rtw_get_channel(wlan0) link_id:0
+03-24 18:43:42.751 W/[2 T960   ..] RTW(    0): cfg80211_rtw_get_txpower
+03-24 18:43:42.880 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:42.942 W/[0 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:42.942 W/[0 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:42.943 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:42.943 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:43.750 E/audio_hw_hal_virtualbuf(  467): ms12 system input underrun happens read=3858396127 write=3160000000 diff=698396127
+03-24 18:43:43.840 W/PackageConfigPersister(  680): App-specific configuration not found for packageName: com.tv2z.stb and userId: 0
+03-24 18:43:43.855 E/C2VencHCodec(  475): [##1##]"frame_rate change to :1"
+03-24 18:43:43.923 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:44.008 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:44.008 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:44.009 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:44.009 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:44.078 W/PickerDbFacade( 1511): Unable to promote cloud media with localId: 1000000190
+03-24 18:43:44.839 W/PackageConfigPersister(  680): App-specific configuration not found for packageName: com.tv2z.stb and userId: 0
+03-24 18:43:44.990 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:45.041 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:45.041 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:45.041 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:45.041 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:45.176 E/C2VencHCodec(  475): [##1##]"frame_rate change to :3"
+03-24 18:43:45.201 E/C2VencHCodec(  475): [##1##]"frame_rate change to :69"
+03-24 18:43:45.222 E/C2VencHCodec(  475): [##1##]"frame_rate change to :53"
+03-24 18:43:45.244 E/C2VencHCodec(  475): [##1##]"frame_rate change to :67"
+03-24 18:43:45.265 E/C2VencHCodec(  475): [##1##]"frame_rate change to :60"
+03-24 18:43:45.288 E/C2VencHCodec(  475): [##1##]"frame_rate change to :57"
+03-24 18:43:45.309 E/C2VencHCodec(  475): [##1##]"frame_rate change to :60"
+03-24 18:43:45.330 E/C2VencHCodec(  475): [##1##]"frame_rate change to :50"
+03-24 18:43:45.352 E/C2VencHCodec(  475): [##1##]"frame_rate change to :71"
+03-24 18:43:45.374 E/C2VencHCodec(  475): [##1##]"frame_rate change to :61"
+03-24 18:43:45.395 E/C2VencHCodec(  475): [##1##]"frame_rate change to :59"
+03-24 18:43:45.417 E/C2VencHCodec(  475): [##1##]"frame_rate change to :56"
+03-24 18:43:45.437 E/C2VencHCodec(  475): [##1##]"frame_rate change to :62"
+03-24 18:43:45.459 E/C2VencHCodec(  475): [##1##]"frame_rate change to :54"
+03-24 18:43:45.479 E/C2VencHCodec(  475): [##1##]"frame_rate change to :66"
+03-24 18:43:45.500 E/C2VencHCodec(  475): [##1##]"frame_rate change to :58"
+03-24 18:43:45.520 E/C2VencHCodec(  475): [##1##]"frame_rate change to :61"
+03-24 18:43:45.753 W/[3 T960   ..] RTW(    0): cfg80211_rtw_get_channel(wlan0) link_id:0
+03-24 18:43:45.753 W/[3 T960   ..] RTW(    0): cfg80211_rtw_get_txpower
+03-24 18:43:46.022 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:46.091 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:46.092 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:46.092 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:46.663 E/C2VencHCodec(  475): [##1##]"frame_rate change to :58"
+03-24 18:43:47.062 E/C2VencHCodec(  475): [##1##]"frame_rate change to :2"
+03-24 18:43:47.072 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:47.084 E/C2VencHCodec(  475): [##1##]"frame_rate change to :63"
+03-24 18:43:47.127 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:47.127 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:47.133 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:47.133 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:47.108 E/C2VencHCodec(  475): [##1##]"frame_rate change to :56"
+03-24 18:43:47.129 E/C2VencHCodec(  475): [##1##]"frame_rate change to :62"
+03-24 18:43:47.150 E/C2VencHCodec(  475): [##1##]"frame_rate change to :69"
+03-24 18:43:47.170 E/C2VencHCodec(  475): [##1##]"frame_rate change to :60"
+03-24 18:43:47.194 E/C2VencHCodec(  475): [##1##]"frame_rate change to :57"
+03-24 18:43:47.237 E/C2VencHCodec(  475): [##1##]"frame_rate change to :63"
+03-24 18:43:47.262 E/C2VencHCodec(  475): [##1##]"frame_rate change to :59"
+03-24 18:43:47.305 E/C2VencHCodec(  475): [##1##]"frame_rate change to :54"
+03-24 18:43:47.327 E/C2VencHCodec(  475): [##1##]"frame_rate change to :65"
+03-24 18:43:47.348 E/C2VencHCodec(  475): [##1##]"frame_rate change to :58"
+03-24 18:43:47.367 E/C2VencHCodec(  475): [##1##]"frame_rate change to :62"
+03-24 18:43:47.391 E/C2VencHCodec(  475): [##1##]"frame_rate change to :57"
+03-24 18:43:47.410 E/C2VencHCodec(  475): [##1##]"frame_rate change to :59"
+03-24 18:43:47.493 W/C2BqBuffer(  475): last successful dequeue was 643081143 us ago, 0 consecutive failures
+03-24 18:43:47.581 E/C2VencHCodec(  475): [##1##]"frame_rate change to :3"
+03-24 18:43:47.637 E/OpenGLRenderer(12104): Unable to match the desired swap behavior.
+03-24 18:43:47.687 E/C2VencHCodec(  475): [##1##]"frame_rate change to :9"
+03-24 18:43:47.695 W/PackageConfigPersister(  680): App-specific configuration not found for packageName: com.tv2z.stb and userId: 0
+03-24 18:43:47.717 E/C2VencHCodec(  475): [##1##]"frame_rate change to :28"
+03-24 18:43:47.748 E/C2VencHCodec(  475): [##1##]"frame_rate change to :32"
+03-24 18:43:47.769 E/C2VencHCodec(  475): [##1##]"frame_rate change to :58"
+03-24 18:43:47.812 E/C2VencHCodec(  475): [##1##]"frame_rate change to :61"
+03-24 18:43:47.833 E/C2VencHCodec(  475): [##1##]"frame_rate change to :65"
+03-24 18:43:47.857 E/C2VencHCodec(  475): [##1##]"frame_rate change to :58"
+03-24 18:43:47.879 E/C2VencHCodec(  475): [##1##]"frame_rate change to :52"
+03-24 18:43:47.903 E/C2VencHCodec(  475): [##1##]"frame_rate change to :60"
+03-24 18:43:47.933 E/C2VencHCodec(  475): [##1##]"frame_rate change to :66"
+03-24 18:43:47.955 E/C2VencHCodec(  475): [##1##]"frame_rate change to :59"
+03-24 18:43:47.979 E/C2VencHCodec(  475): [##1##]"frame_rate change to :53"
+03-24 18:43:48.005 E/C2VencHCodec(  475): [##1##]"frame_rate change to :66"
+03-24 18:43:48.029 E/C2VencHCodec(  475): [##1##]"frame_rate change to :61"
+03-24 18:43:48.053 E/C2VencHCodec(  475): [##1##]"frame_rate change to :56"
+03-24 18:43:48.079 E/C2VencHCodec(  475): [##1##]"frame_rate change to :62"
+03-24 18:43:48.104 E/C2VencHCodec(  475): [##1##]"frame_rate change to :60"
+03-24 18:43:48.115 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:48.134 E/C2VencHCodec(  475): [##1##]"frame_rate change to :57"
+03-24 18:43:48.156 E/C2VencHCodec(  475): [##1##]"frame_rate change to :63"
+03-24 18:43:48.178 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:48.179 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:48.179 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:48.180 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:48.181 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:48.161 W/WindowOnBackDispatcher(12104): sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@90575b7
+03-24 18:43:48.177 W/InputManager-JNI(  680): Input channel object 'e21be89 com.tv2z.stb/com.studio.androidtv.presentation.activities.SeriesDetailActivity (client)' was disposed without first being removed with the input manager!
+03-24 18:43:48.186 E/C2VencHCodec(  475): [##1##]"frame_rate change to :58"
+03-24 18:43:48.233 E/C2VencHCodec(  475): [##1##]"frame_rate change to :62"
+03-24 18:43:48.256 E/C2VencHCodec(  475): [##1##]"frame_rate change to :56"
+03-24 18:43:48.301 E/C2VencHCodec(  475): [##1##]"frame_rate change to :64"
+03-24 18:43:48.757 W/[2 T960   ..] RTW(    0): cfg80211_rtw_get_channel(wlan0) link_id:0
+03-24 18:43:48.757 W/[2 T960   ..] RTW(    0): cfg80211_rtw_get_txpower
+03-24 18:43:49.160 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:49.231 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:49.231 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:49.231 W/[3 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:49.825 E/newrelic(12104): Invalid Json entry skipped [{"level":"ERROR","attributes":{"level":"ERROR","tag":"analyse","message":"post data ---\u003e {\"requests\":[\"?ma_st\u003d196\u0026ma_ttp\u003d1\u0026idsite\u003d151\u0026ma_ec\u003d0\u0026ma_id\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026ma_h\u003dnull\u0026rand\u003d42969\u0026rec\u003d1\u0026uid\u003d0a87a20c-c11e-4afd-bb8a-99679559325e\u0026ma_re\u003dhttps%3A%2F%2Fwhs-abr.prd.cdn.bcms.kpn.com%2F00bf303e71ddb467e758e59253501f4e_1774438556%2Fitvonline%2Fclusterg%2Flive%2F20%2F20.isml%2F20.mpd%3Ffilter%3D%2528type%253D%253D%2522audio%2522%2526%2526FourCC%2521%253D%2522ac-3%2522%2529%257C%257C%2528type%253D%253D%2522video%2522%2526%2526MaxHeight%253C%253D1080%2529%257C%257C%2528type%253D%253D%2522textstream%2522%2529%26vbegin%3D2026-03-24T11%3A25%3A00.000\u0026send_image\u003d0\u0026ma_ps\u003d655\u0026ma_pn\u003dTV2Z%20Android%20Player\u0026ma_le\u003d86400\u0026_cvar\u003d%7B%221%22%3A%5B%22deviceId%22%2C%2211a5b3d5126c2507%22%5D%7D\u0026ma_ti\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026url\u003dhttp%3A%2F%2Fcom.tv2z.stb%2F\u0026ma_bt\u003d51\u0026apiv\u003d1\u0026cdt\u003d2026-03-24%2018%3A42%3A47%2B0530\u0026ma_fs\u003dfalse\u0026ma_br\u003d0\u0026ma_jt\u003d1\u0026_id\u003da21c12a5e603449e\u0026ma_w\u003dnull\",\"?ma_st\u003d202\u0026ma_ttp\u003d12\u0026idsite\u003d151\u0026ma_ec\u003d0\u0026ma_id\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026ma_h\u003dnull\u0026rand\u003d49450\u0026rec\u003d1\u0026uid\u003d0a87a20c-c11e-4afd-bb8a-99679559325e\u0026ma_re\u003dhttps%3A%2F%2Fwhs-abr.prd.cdn.bcms.kpn.com%2F7784cebbfd1942ce657f7e27aa4a6c42_1774438533%2Fitvonline%2Fclusterg%2Flive%2F20%2F20.isml%2F20.mpd%3Ffilter%3D%2528type%253D%253D%2522audio%2522%2526%2526FourCC%2521%253D%2522ac-3%2522%2529%257C%257C%2528type%253D%253D%2522video%2522%2526%2526MaxHeight%253C%253D1080%2529%257C%257C%2528type%253D%253D%2522textstream%2522%2529%26vbegin%3D2026-03-24T11%3A25%3A00.000\u0026send_image\u003d0\u0026ma_ps\u003d655\u0026ma_pn\u003dTV2Z%20Android%20Player\u0026ma_le\u003d86400\u0026_cvar\u003d%7B%221%22%3A%5B%22deviceId%22%2C%2211a5b3d5126c2507%22%5D%7D\u0026ma_ti\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026url\u003dhttp%3A%2F%2Fcom.tv2z.stb%2F\u0026ma_bt\u003d65\u0026apiv\u003d1\u0026cdt\u003d2026-03-24%2018%3A42%3A47%2B0530\u0026ma_fs\u003dfalse\u0026ma_br\u003d0\u0026ma_jt\u003d11\u0026_id\u003da21c12a5e603449e\u0026ma_w\u003dnull\",\"?ma_st\u003d202\u0026ma_ttp\u003d10\u0026idsite\u003d151\u0026ma_ec\u003d0\u0026ma_id\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026ma_h\u003dnull\u0026rand\u003d58756\u0026rec\u003d1\u0026uid\u003d0a87a20c-c11e-4afd-bb8a-99679559325e\u0026ma_re\u003dhttps%3A%2F%2Fwhs-abr.prd.cdn.bcms.kpn.com%2Fa9cc2f4ae0665de7d592f13d467196a8_1774438535%2Fitvonline%2Fclusterg%2Flive%2F20%2F20.isml%2F20.mpd%3Ffilter%3D%2528type%253D%253D%2522audio%2522%2526%2526FourCC%2521%253D%2522ac-3%2522%2529%257C%257C%2528type%253D%253D%2522video%2522%2526%2526MaxHeight%253C%253D1080%2529%257C%257C%2528type%253D%253D%2522textstream%2522%2529\u0026send_image\u003d0\u0026ma_ps\u003d655\u0026ma_pn\u003dTV2Z%20Android%20Player\u0026ma_le\u003d86400\u0026_cvar\u003d%7B%221%22%3A%5B%22deviceId%22%2C%2211a5b3d5126c2507%22%5D%7D\u0026ma_ti\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026url\u003dhttp%3A%2F%2Fcom.tv2z.stb%2F\u0026ma_bt\u003d63\u0026apiv\u003d1\u0026cdt\u003d2026-03-24%2018%3A42%3A47%2B0530\u0026ma_fs\u003dfalse\u0026ma_br\u003d0\u0026ma_jt\u003d10\u0026_id\u003da21c12a5e603449e\u0026ma_w\u003dnull\",\"?ma_st\u003d202\u0026ma_ttp\u003d3\u0026idsite\u003d151\u0026ma_ec\u003d0\u0026ma_id\u003ddfd1d07e-a26b-40b1-a07b-d3659807d896\u0026ma_h\u003dnull\u0026rand\u003d909\u0026rec\u003d1\u0026uid\u003d0a87a20c-c11e-4afd-bb8a-99679559325e\u0026ma_re\u003dhttps%3A%2F%2Fwhs-abr.prd.cdn.bcms.kpn.com%2F001576eb9264f25629c3f5c21a95831c_1774438542%2Fitvonline%2Fclusterg%2Flive%2F20%2F20.isml%2F20.mpd%3Ffilter%3D%2528type%253D%253D%2522audio%2522%2526%2526FourCC%2521%253D%2522ac-3%2522%2529%257C%257C%2528type%253D%253D%2522video%2522%2526%2526MaxHeight%25
+03-24 18:43:49.858 E/newrelic(12104): LogReporter: java.lang.NumberFormatException: \u002{
+03-24 18:43:50.202 W/MPEG4Writer(29956): 0-duration samples found: 1
+03-24 18:43:50.202 W/MPEG4Writer(29956): 0-duration samples found: 1
+03-24 18:43:50.212 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:50.216 E/C2VencComponent(  475): this component has already stopped
+03-24 18:43:50.275 W/[0 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:50.281 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:50.281 W/[2 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:50.310 E/MetadataRetrieverClient(  590): unable to dlopen metadata_retriever extension: dlopen failed: library "libmetadataretriever_ext.so" not found
+03-24 18:43:50.326 E/exFFmpeg(  586): [mov_read_header:8628] pts_only set.
+03-24 18:43:50.329 E/AmFFmpegExtractor(  586): major_brand:mp42
+03-24 18:43:50.329 E/AmFFmpegExtractor(  586): compatible_brands:isommp42
+03-24 18:43:50.329 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.329 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.329 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.329 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.329 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.372 E/newrelic(12104): LogReporter: java.lang.NumberFormatException: \u002{
+03-24 18:43:50.458 W/System  (12104): A resource failed to call close. 
+03-24 18:43:50.458 W/System  (12104): A resource failed to call close. 
+03-24 18:43:50.483 E/AmFFmpegExtractor(  586): major_brand:mp42
+03-24 18:43:50.483 E/AmFFmpegExtractor(  586): compatible_brands:isommp42
+03-24 18:43:50.483 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.483 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.483 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.483 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.483 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.501 E/MetadataRetrieverClient(  590): unable to dlopen metadata_retriever extension: dlopen failed: library "libmetadataretriever_ext.so" not found
+03-24 18:43:50.507 E/exFFmpeg(  586): [mov_read_header:8628] pts_only set.
+03-24 18:43:50.508 E/AmFFmpegExtractor(  586): major_brand:mp42
+03-24 18:43:50.508 E/AmFFmpegExtractor(  586): compatible_brands:isommp42
+03-24 18:43:50.508 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.508 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.508 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.508 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.508 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.643 E/AmFFmpegExtractor(  586): major_brand:mp42
+03-24 18:43:50.643 E/AmFFmpegExtractor(  586): compatible_brands:isommp42
+03-24 18:43:50.643 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.643 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.643 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:50.644 W/AmFFmpegUtils(  586): Unsupported codec id : 0
+03-24 18:43:50.644 E/AmFFmpegExtractor(  586): codec_ctx->properties: 0
+03-24 18:43:51.263 W/adbd    ( 5030): timed out while waiting for FUNCTIONFS_BIND, trying again
+03-24 18:43:51.324 W/[0 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:51.324 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:51.324 W/[1 T5032  ..] udc-core(    0): couldn't find an available UDC or it's busy
+03-24 18:43:51.762 W/[2 T960   ..] RTW(    0): cfg80211_rtw_get_channel(wlan0) link_id:0
+03-24 18:43:51.762 W/[2 T960   ..] RTW(    0): cfg80211_rtw_get_txpower

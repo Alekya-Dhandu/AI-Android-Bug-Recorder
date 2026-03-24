@@ -1,0 +1,32 @@
+{
+  "name": "ai-bug-recorder",
+  "version": "1.0.0",
+  "description": "Jam-like Android QA bug recorder with AI-powered report generation",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron ."
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0",
+    "electron": "^41.0.3"
+  },
+  "devDependencies": {
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.qa.aibugrecorder",
+    "productName": "AI Bug Recorder",
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Bug Recorder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="titlebar">
+    <span class="app-name">AI Bug Recorder</span>
+    <span class="version">v1.0.0</span>
+  </div>
+
+  <div class="layout">
+    <!-- Left panel: controls -->
+    <aside class="sidebar">
+      <section class="card">
+        <h3>Device</h3>
+        <button id="btn-refresh" class="btn">Refresh devices</button>
+        <select id="device-select"><option value="">— no device —</option></select>
+        <div id="device-info" class="device-info hidden"></div>
+      </section>
+
+      <section class="card">
+        <h3>Session</h3>
+        <button id="btn-start" class="btn btn-green" disabled>▶ Start recording</button>
+        <button id="btn-stop"  class="btn btn-red"   disabled>■ Stop recording</button>
+        <div id="timer" class="timer hidden">00:00</div>
+      </section>
+
+      <section class="card">
+        <h3>Output</h3>
+        <button id="btn-generate" class="btn btn-blue" disabled>✦ Generate bug info</button>
+        <button id="btn-copy"     class="btn"          disabled>⎘ Copy to clipboard</button>
+        <button id="btn-save"     class="btn"          disabled>↓ Save as .txt</button>
+      </section>
+
+      <div id="status" class="status">Ready</div>
+    </aside>
+
+    <!-- Right panel: output -->
+    <main class="main">
+      <div class="tabs">
+        <button class="tab active" data-tab="actions">Actions</button>
+        <button class="tab"        data-tab="output">Bug output</button>
+        <button class="tab"        data-tab="logs">Logs</button>
+      </div>
+
+      <div id="tab-actions" class="tab-panel">
+        <p class="hint">Recorded user actions appear here during a session.</p>
+        <ol id="action-list"></ol>
+      </div>
+
+      <div id="tab-output" class="tab-panel hidden">
+        <div id="output-empty" class="empty-state">
+          <p>Run a session and click <strong>Generate bug info</strong> to see output here.</p>
+        </div>
+
+        <div id="output-cards" class="hidden">
+
+          <!-- Title -->
+          <div class="out-card">
+            <div class="out-card-header">
+              <span class="out-label">Bug title</span>
+              <button class="copy-btn" data-target="out-title">⎘ Copy</button>
+            </div>
+            <div id="out-title" class="out-title"></div>
+          </div>
+
+          <!-- Steps -->
+          <div class="out-card">
+            <div class="out-card-header">
+              <span class="out-label">Steps to reproduce</span>
+              <button class="copy-btn" data-target="out-steps">⎘ Copy</button>
+            </div>
+            <ol id="out-steps" class="out-steps"></ol>
+          </div>
+
+          <!-- Recording -->
+          <div class="out-card">
+            <div class="out-card-header">
+              <span class="out-label">Screen recording</span>
+            </div>
+            <div id="out-video" class="out-video-row">
+              <span class="file-icon">▶</span>
+              <span id="out-video-path" class="file-path">—</span>
+              <button id="btn-open-video" class="copy-btn" disabled>Open folder</button>
+            </div>
+          </div>
+
+          <!-- Logs -->
+          <div class="out-card">
+            <div class="out-card-header">
+              <span class="out-label">Logs</span>
+              <div style="display:flex;gap:6px">
+                <button class="copy-btn" data-target="out-logs">⎘ Copy</button>
+                <button id="btn-open-log" class="copy-btn" disabled>Open file</button>
+              </div>
+            </div>
+            <pre id="out-logs" class="out-logs"></pre>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="tab-logs" class="tab-panel hidden">
+        <pre id="log-out" class="log-pre">No logs yet.</pre>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
