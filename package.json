@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
-    "electron-builder": "^26.8.1"
+    "electron-builder": "^26.8.1",
+    "pptxgenjs": "^4.0.1"
   },
   "build": {
     "appId": "com.qa.aibugrecorder",
