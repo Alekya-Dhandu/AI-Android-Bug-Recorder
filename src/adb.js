@@ -44,6 +44,26 @@ async function getDeviceInfo(serial) {
   }
 }
 
+// ── Package selection ─────────────────────────────────────────────────────────
+
+let selectedPackage = null;
+
+async function listPackages(serial) {
+  const { stdout } = await execAsync(`adb -s ${serial} shell pm list packages -3`);
+  return stdout.trim().split("\n")
+    .map(l => l.replace(/^package:/, "").trim())
+    .filter(Boolean)
+    .sort();
+}
+
+function setSelectedPackage(pkg) {
+  selectedPackage = pkg;
+}
+
+function getSelectedPackage() {
+  return selectedPackage;
+}
+
 // ── Screen recording ──────────────────────────────────────────────────────────
 
 let recordProc = null;
@@ -77,23 +97,41 @@ async function stopRecording(serial, localPath) {
 }
 
 // ── Logcat ────────────────────────────────────────────────────────────────────
-
 async function startLogcat(serial, logPath) {
   logBuffer = [];
-  // Clear existing log buffer on device
+  // 1. Clear existing log buffer on device
   await execAsync(`adb -s ${serial} logcat -c`).catch(() => {});
 
-  logcatProc = spawn("adb", ["-s", serial, "logcat", "-v", "time", "*:W"]);
+  // 2. Prepare the command arguments
+  const args = ["-s", serial, "logcat", "-v", "time", "*:W"];
 
-  logcatProc.stdout.on("data", data => {
-    const text = data.toString();
-    logBuffer.push(text);
-    // Live write
-    fs.appendFileSync(logPath, text);
-  });
+  // 3. If a package is selected, find its PID and add the filter
+  let pid = null;
+  if (selectedPackage) {
+    try {
+      const { stdout } = await execAsync(`adb -s ${serial} shell pidof -s ${selectedPackage}`);
+      const pid = stdout.trim();
+    } catch (e) {
+      console.warn(`[logcat] Could not find PID for ${selectedPackage}. App might not be running.`);
+    }
 
-  logcatProc.stderr.on("data", d => console.error("[logcat]", d.toString()));
-}
+    const args = ["-s", serial, "shell","logcat", "-v", "long"];
+      if (pid) {
+        args.push("--pid", pid);
+      }
+        args.push("--pid", pid);
+    } 
+    args.push("*:W");
+    loccatProc = spawn("adb", args);
+
+    logcatProc.stdout.on("data", data => {
+      const text = data.toString();
+      logBuffer.push(text);
+      fs.appendFileSync(logPath, text);
+    });
+
+    logcatProc.stderr.on("data", d => console.error("[logcat]", d.toString())); 
+  }
 
 async function stopLogcat() {
   if (logcatProc) {
@@ -103,4 +141,4 @@ async function stopLogcat() {
   return logBuffer.join("");
 }
 
-module.exports = { listDevices, selectDevice, getDeviceInfo, startRecording, stopRecording, startLogcat, stopLogcat };
+module.exports = { listDevices, selectDevice, getDeviceInfo, listPackages, setSelectedPackage, getSelectedPackage, startRecording, stopRecording, startLogcat, stopLogcat };

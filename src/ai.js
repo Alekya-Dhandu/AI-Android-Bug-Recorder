@@ -1,61 +1,140 @@
 const Anthropic = require("@anthropic-ai/sdk");
-
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-/**
- * Generate full bug report fields from raw session data.
- * Returns structured JSON: { title, summary, steps, expected, actual, rootCause, errorSummary }
- */
-async function generateReport({ logs, actions, deviceInfo }) {
-  const stepsText = actions
-    .map(a => `  Step ${a.step} [${a.ts}]: ${a.description}`)
+async function generateReport({ logs, actions, uiIssues, deviceInfo }) {
+
+  // ── Bug ID ─────────────────────────────────────────────────────────────────
+  const now  = new Date();
+  const date = now.toISOString().slice(0,10).replace(/-/g,"");
+  const seq  = String(now.getMinutes() * 60 + now.getSeconds()).padStart(4,"0");
+  const bugId = `BUG-${date}-${seq}`;
+
+  // ── Screen flow ────────────────────────────────────────────────────────────
+  const screens = [];
+  for (const a of actions) {
+    if (a.screen && a.screen !== screens[screens.length-1]) screens.push(a.screen);
+  }
+  const screenFlow = screens.join(" → ");
+
+  // ── Raw steps (exclude internal ui_issue markers) ──────────────────────────
+  const userSteps = actions
+    .filter(a => a.type !== "ui_issue")
+    .map(a => `  ${a.step}. ${a.label}`)
     .join("\n");
 
-  // Trim logs to last 300 lines to stay within context
-  const logLines = logs.split("\n");
-  const trimmedLogs = logLines.slice(-300).join("\n");
+  const uiIssueText = uiIssues.length > 0 ? uiIssues.join("\n") : "None";
 
-  const prompt = `You are a senior Android QA engineer analysing a bug recording session.
+  // ── Relevant logs — filter to errors / warnings only ──────────────────────
+  const relevantLogs = logs
+    .split("\n")
+    .filter(l => /E\/|W\/|Exception|Error|ANR|fatal|FATAL|crash/i.test(l))
+    .slice(-60)
+    .join("\n");
 
-## Device
-Model: ${deviceInfo.brand} ${deviceInfo.model}
-Android: ${deviceInfo.osVer} (API ${deviceInfo.sdk})
-Resolution: ${deviceInfo.resolution}
+  const prompt = `You are a senior Android TV / OTT QA engineer writing a bug report.
 
-## Recorded User Actions
-${stepsText || "No actions detected"}
+The steps below were auto-recorded from the device using UIAutomator + getevent.
+Your job is to:
+1. Clean the steps into clear, human-readable sentences exactly like this format:
 
-## ADB Logcat (last 300 lines)
+   1. Navigate to Live Player
+   2. Bring player controls by pressing Down from the RCU
+   3. Click on "Explore TV"
+
+   Rules for steps:
+   - Output EVERY step from the recorded list below — do not skip, merge, or summarise any
+   - Each step on its own line, numbered: 1. 2. 3. ...
+   - No blank lines between steps
+   - No sub-bullets, no indentation, no extra text inside the steps block
+   - Each step is a plain action sentence — no key codes, no technical terms
+   - If the user pressed Down in a player screen → "Bring player controls by pressing Down from the RCU"
+   - If the user clicked/selected a visible UI element → "Click on '<element name>'"
+   - If the user navigated to a screen → "Navigate to <Screen Name>"
+   - If the user pressed Back → "Press Back"
+   - Element names must use the actual text visible on screen (e.g. "Explore TV", "Go Live", "Play")
+   - Keep each step to one action
+
+2. Write Title as: "<Screen> - <short problem description>"
+   Example: "Live Player - User not redirecting to live details page after clicking Explore TV"
+
+3. Write Summary as one plain sentence describing the user flow and what went wrong.
+   Example: "In the Live Player, clicking on 'Explore TV' does not redirect the user to the live details page."
+
+4. Expected: what should happen from a user's perspective (1 sentence)
+5. Actual: what actually happened (1 sentence)
+6. Error: shortest error from logs — one line. "None" if clean.
+
+---
+
+Bug ID: ${bugId}
+Device: ${deviceInfo.brand} ${deviceInfo.model}, Android ${deviceInfo.osVer}
+Screen Flow: ${screenFlow}
+
+UI issues observed:
+${uiIssueText}
+
+Recorded steps from device:
+${userSteps || "No steps captured"}
+
+Relevant error logs:
 \`\`\`
-${trimmedLogs || "No logs captured"}
+${relevantLogs || "No errors in logs"}
 \`\`\`
 
-Analyse the session and respond ONLY with a JSON object (no markdown fences, no preamble) with these keys:
-{
-  "title": "Short, descriptive bug title (max 80 chars)",
-  "summary": "2–3 sentence executive summary of what went wrong",
-  "steps": ["Step 1: ...", "Step 2: ...", ...],
-  "expected": "What the app should have done",
-  "actual": "What the app actually did",
-  "errorSummary": "Key errors / exceptions from the logs (max 3 bullet points as a single string)",
-  "rootCause": "Most likely root cause based on logs and actions (1–2 sentences)"
-}`;
+Output ONLY this format — no JSON, no markdown, no extra text:
+
+Title: 
+Summary: 
+Steps:
+1. 
+2. 
+...
+Expected: 
+Actual: 
+Error: 
+Screen Flow: `;
 
   const msg = await client.messages.create({
-    model: "claude-opus-4-20250514",
-    max_tokens: 1024,
-    messages: [{ role: "user", content: prompt }],
+    model:      "claude-sonnet-4-20250514",
+    max_tokens: 800,
+    messages:   [{ role: "user", content: prompt }],
   });
 
-  const raw = msg.content[0].text.trim();
-  try {
-    return JSON.parse(raw);
-  } catch {
-    // Fallback: extract JSON from response if there's surrounding text
-    const match = raw.match(/\{[\s\S]*\}/);
-    if (match) return JSON.parse(match[0]);
-    throw new Error("AI response was not valid JSON: " + raw.slice(0, 200));
-  }
+  const text = msg.content[0].text.trim();
+
+  // ── Parse plain text output into fields ───────────────────────────────────
+  const getField = (label) => {
+    const m = text.match(new RegExp(`^${label}:\\s*(.+)`, "mi"));
+    return m ? m[1].trim() : "";
+  };
+
+  // Robust steps parser — finds every line starting with a number after "Steps:"
+  const stepsBlock = text.match(/Steps:\s*\n([\s\S]+?)(?:\n(?:Expected:|Actual:|Error:|Screen Flow:)|$)/i);
+  const steps = stepsBlock
+    ? stepsBlock[1]
+        .split("\n")
+        .map(s => s.trim())
+        .filter(s => /^\d+[\.\)]/.test(s))          // keep only numbered lines
+        .map(s => s.replace(/^\d+[\.\)]\s*/, "").trim()) // strip leading "1. " or "1)"
+        .filter(Boolean)
+    : [];
+
+  return {
+    bugId,
+    title:       getField("Title"),
+    summary:     getField("Summary"),
+    steps,
+    expected:    getField("Expected"),
+    actual:      getField("Actual"),
+    error:       getField("Error"),
+    screenFlow:  getField("Screen Flow") || screenFlow,
+    relevantLogs,
+    rawReport:   buildRawReport(bugId, text, deviceInfo, sessionMeta => sessionMeta),
+  };
+}
+
+function buildRawReport(bugId, text, deviceInfo) {
+  return `Bug ID: ${bugId}\n\n${text}\n\nGenerated by AI Bug Recorder`;
 }
 
 module.exports = { generateReport };

@@ -24,15 +24,29 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
       nodeIntegration: false,
+      sandbox: false,
     },
   });
-  win.loadFile("renderer/index.html");
+  win.loadFile(path.join(__dirname, "renderer", "index.html"));
 }
 
 app.whenReady().then(createWindow);
 app.on("window-all-closed", () => { if (process.platform !== "darwin") app.quit(); });
 
 // ── IPC handlers ──────────────────────────────────────────────────────────────
+
+ipcMain.handle("adb:list-packages", async (_, serial) => {
+  return adb.listPackages(serial);
+});
+
+ipcMain.handle("adb:set-package", async (_, pkg) => {
+  adb.setSelectedPackage(pkg);
+  return true;
+});
+
+ipcMain.handle("adb:get-package", async () => {
+  return adb.getSelectedPackage();
+});
 
 ipcMain.handle("adb:list-devices", async () => {
   return adb.listDevices();
@@ -58,11 +72,12 @@ ipcMain.handle("recording:stop", async (_, { serial, videoPath, logPath }) => {
   await adb.stopRecording(serial, videoPath);
   const logs = await adb.stopLogcat();
   const capturedActions = actions.getActions();
-  return { logs, actions: capturedActions };
+  const capturedUiIssues = actions.getUiIssues();
+  return { logs, actions: capturedActions, uiIssues: capturedUiIssues };
 });
 
-ipcMain.handle("ai:generate", async (_, { logs, capturedActions, deviceInfo }) => {
-  return ai.generateReport({ logs, actions: capturedActions, deviceInfo });
+ipcMain.handle("ai:generate", async (_, { logs, capturedActions, uiIssues, deviceInfo }) => {
+  return ai.generateReport({ logs, actions: capturedActions, uiIssues, deviceInfo });
 });
 
 ipcMain.handle("report:build", async (_, data) => {

@@ -13,7 +13,7 @@
   </div>
 
   <div class="layout">
-    <!-- Left panel: controls -->
+    <!-- Sidebar -->
     <aside class="sidebar">
       <section class="card">
         <h3>Device</h3>
@@ -23,87 +23,140 @@
       </section>
 
       <section class="card">
+        <h3>App package</h3>
+        <button id="btn-load-packages" class="btn" disabled>Load packages</button>
+        <div id="pkg-search-wrap" class="hidden">
+          <input id="pkg-search" type="text" placeholder="Filter packages..." autocomplete="off" />
+        </div>
+        <select id="pkg-select" size="6" class="pkg-list hidden"></select>
+        <div id="pkg-selected" class="pkg-badge hidden"></div>
+      </section>
+
+      <section class="card">
         <h3>Session</h3>
-        <button id="btn-start" class="btn btn-green" disabled>▶ Start recording</button>
-        <button id="btn-stop"  class="btn btn-red"   disabled>■ Stop recording</button>
+        <button id="btn-start"  class="btn btn-green" disabled>▶ Start recording</button>
+        <button id="btn-stop"   class="btn btn-red"   disabled>■ Stop recording</button>
         <div id="timer" class="timer hidden">00:00</div>
       </section>
 
       <section class="card">
         <h3>Output</h3>
-        <button id="btn-generate" class="btn btn-blue" disabled>✦ Generate bug info</button>
-        <button id="btn-copy"     class="btn"          disabled>⎘ Copy to clipboard</button>
+        <button id="btn-generate" class="btn btn-blue" disabled>✦ Generate bug report</button>
+        <button id="btn-copy"     class="btn"          disabled>⎘ Copy report</button>
         <button id="btn-save"     class="btn"          disabled>↓ Save as .txt</button>
       </section>
 
       <div id="status" class="status">Ready</div>
     </aside>
 
-    <!-- Right panel: output -->
+    <!-- Main -->
     <main class="main">
       <div class="tabs">
-        <button class="tab active" data-tab="actions">Actions</button>
-        <button class="tab"        data-tab="output">Bug output</button>
+        <button class="tab active" data-tab="actions">Live actions</button>
+        <button class="tab"        data-tab="report">Bug report</button>
         <button class="tab"        data-tab="logs">Logs</button>
       </div>
 
+      <!-- Live actions tab -->
       <div id="tab-actions" class="tab-panel">
-        <p class="hint">Recorded user actions appear here during a session.</p>
+        <p class="hint">Steps are recorded live as you interact with the device.</p>
         <ol id="action-list"></ol>
       </div>
 
-      <div id="tab-output" class="tab-panel hidden">
+      <!-- Bug report tab -->
+      <div id="tab-report" class="tab-panel hidden">
+
         <div id="output-empty" class="empty-state">
-          <p>Run a session and click <strong>Generate bug info</strong> to see output here.</p>
+          <p>Run a session and click <strong>Generate bug report</strong>.</p>
         </div>
 
         <div id="output-cards" class="hidden">
 
+          <!-- Bug ID row -->
+          <div class="bugid-row">
+            <span id="out-bug-id" class="bug-id-badge"></span>
+            <button class="copy-btn" id="btn-copy-all">⎘ Copy full report</button>
+          </div>
+
           <!-- Title -->
-          <div class="out-card">
-            <div class="out-card-header">
-              <span class="out-label">Bug title</span>
-              <button class="copy-btn" data-target="out-title">⎘ Copy</button>
-            </div>
-            <div id="out-title" class="out-title"></div>
+          <div class="field-block">
+            <div class="field-label">Title</div>
+            <div id="out-title" class="field-value field-title"></div>
+          </div>
+
+          <!-- Summary -->
+          <div class="field-block">
+            <div class="field-label">Summary</div>
+            <div id="out-summary" class="field-value"></div>
           </div>
 
           <!-- Steps -->
-          <div class="out-card">
-            <div class="out-card-header">
-              <span class="out-label">Steps to reproduce</span>
-              <button class="copy-btn" data-target="out-steps">⎘ Copy</button>
-            </div>
-            <ol id="out-steps" class="out-steps"></ol>
+          <div class="field-block">
+            <div class="field-label">Steps to reproduce</div>
+            <ol id="out-steps" class="steps-list"></ol>
           </div>
 
-          <!-- Recording -->
-          <div class="out-card">
-            <div class="out-card-header">
-              <span class="out-label">Screen recording</span>
+          <!-- Expected / Actual side by side -->
+          <div class="two-col">
+            <div class="field-block">
+              <div class="field-label">Expected</div>
+              <div id="out-expected" class="field-value field-expected"></div>
             </div>
-            <div id="out-video" class="out-video-row">
-              <span class="file-icon">▶</span>
-              <span id="out-video-path" class="file-path">—</span>
-              <button id="btn-open-video" class="copy-btn" disabled>Open folder</button>
+            <div class="field-block">
+              <div class="field-label">Actual</div>
+              <div id="out-actual" class="field-value field-actual"></div>
             </div>
           </div>
 
-          <!-- Logs -->
-          <div class="out-card">
-            <div class="out-card-header">
-              <span class="out-label">Logs</span>
-              <div style="display:flex;gap:6px">
-                <button class="copy-btn" data-target="out-logs">⎘ Copy</button>
-                <button id="btn-open-log" class="copy-btn" disabled>Open file</button>
-              </div>
+          <!-- Error -->
+          <div class="field-block">
+            <div class="field-label">Error</div>
+            <div id="out-error" class="field-value field-error"></div>
+          </div>
+
+          <!-- Device -->
+          <div class="two-col">
+            <div class="field-block">
+              <div class="field-label">Device</div>
+              <div id="out-device" class="field-value"></div>
             </div>
-            <pre id="out-logs" class="out-logs"></pre>
+            <div class="field-block">
+              <div class="field-label">OS</div>
+              <div id="out-os" class="field-value"></div>
+            </div>
+          </div>
+
+          <!-- Screen flow -->
+          <div class="field-block">
+            <div class="field-label">Screen flow</div>
+            <div id="out-flow" class="field-value field-flow"></div>
+          </div>
+
+          <!-- Relevant logs -->
+          <div class="field-block">
+            <div class="field-label">Relevant logs</div>
+            <pre id="out-relevant-logs" class="field-value field-logs"></pre>
+          </div>
+
+          <!-- Attachments -->
+          <div class="field-block">
+            <div class="field-label">Attachments</div>
+            <div class="attach-row">
+              <span class="attach-icon">▶</span>
+              <span id="out-video-path" class="attach-path">—</span>
+              <button id="btn-open-video" class="copy-btn" disabled>Open</button>
+            </div>
+            <div class="attach-row" style="margin-top:6px">
+              <span class="attach-icon">≡</span>
+              <span id="out-log-path" class="attach-path">—</span>
+              <button id="btn-open-log" class="copy-btn" disabled>Open</button>
+            </div>
           </div>
 
         </div>
       </div>
 
+      <!-- Logs tab -->
       <div id="tab-logs" class="tab-panel hidden">
         <pre id="log-out" class="log-pre">No logs yet.</pre>
       </div>
