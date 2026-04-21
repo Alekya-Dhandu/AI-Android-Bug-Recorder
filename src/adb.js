@@ -31,14 +31,16 @@ async function getDeviceInfo(serial) {
       const { stdout } = await execAsync(`adb -s ${serial} shell getprop ${key}`);
       return stdout.trim();
     };
-    const [model, brand, osVer, sdk, res] = await Promise.all([
+    const [model, brand, osVer, sdk, res, serialNo, firmwareVer] = await Promise.all([
       prop("ro.product.model"),
       prop("ro.product.brand"),
       prop("ro.build.version.release"),
       prop("ro.build.version.sdk"),
       execAsync(`adb -s ${serial} shell wm size`).then(r => r.stdout.replace("Physical size:", "").trim()),
+      prop("ro.serialno"),
+      prop("ro.odm.sdmc.firmware.ver"),
     ]);
-    return { serial, model, brand, osVer, sdk, resolution: res };
+    return { serial, model, brand, osVer, sdk, resolution: res, serialNo, firmwareVer };
   } catch {
     return null;
   }
@@ -49,7 +51,7 @@ async function getDeviceInfo(serial) {
 let selectedPackage = null;
 
 async function listPackages(serial) {
-  const { stdout } = await execAsync(`adb -s ${serial} shell pm list packages -3`);
+  const { stdout } = await execAsync(`adb -s ${serial} shell pm list packages`);
   return stdout.trim().split("\n")
     .map(l => l.replace(/^package:/, "").trim())
     .filter(Boolean)
@@ -103,35 +105,33 @@ async function startLogcat(serial, logPath) {
   await execAsync(`adb -s ${serial} logcat -c`).catch(() => {});
 
   // 2. Prepare the command arguments
-  const args = ["-s", serial, "logcat", "-v", "time", "*:W"];
+  const args = ["-s", serial, "logcat", "-v", "time"];
 
   // 3. If a package is selected, find its PID and add the filter
-  let pid = null;
   if (selectedPackage) {
+    let pid = null;
     try {
       const { stdout } = await execAsync(`adb -s ${serial} shell pidof -s ${selectedPackage}`);
-      const pid = stdout.trim();
+      pid = stdout.trim();
     } catch (e) {
       console.warn(`[logcat] Could not find PID for ${selectedPackage}. App might not be running.`);
     }
-
-    const args = ["-s", serial, "shell","logcat", "-v", "long"];
-      if (pid) {
-        args.push("--pid", pid);
-      }
-        args.push("--pid", pid);
-    } 
-    args.push("*:W");
-    loccatProc = spawn("adb", args);
-
-    logcatProc.stdout.on("data", data => {
-      const text = data.toString();
-      logBuffer.push(text);
-      fs.appendFileSync(logPath, text);
-    });
-
-    logcatProc.stderr.on("data", d => console.error("[logcat]", d.toString())); 
+    if (pid) {
+      args.push("--pid", pid);
+    }
   }
+
+  args.push("*:W");
+  logcatProc = spawn("adb", args);
+
+  logcatProc.stdout.on("data", data => {
+    const text = data.toString();
+    logBuffer.push(text);
+    fs.appendFileSync(logPath, text);
+  });
+
+  logcatProc.stderr.on("data", d => console.error("[logcat]", d.toString()));
+}
 
 async function stopLogcat() {
   if (logcatProc) {

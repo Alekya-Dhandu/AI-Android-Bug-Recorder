@@ -129,7 +129,7 @@ Screen Flow: `;
     error:       getField("Error"),
     screenFlow:  getField("Screen Flow") || screenFlow,
     relevantLogs,
-    rawReport:   buildRawReport(bugId, text, deviceInfo, sessionMeta => sessionMeta),
+    rawReport:   buildRawReport(bugId, text, deviceInfo),
   };
 }
 

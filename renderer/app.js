@@ -135,6 +135,8 @@ function buildPlainReport() {
     "", "Error:",    aiResult.error    || "None",
     "", "Device:",   selectedDevice ? selectedDevice.brand + " " + selectedDevice.model : "",
     "", "OS:",       "Android " + (selectedDevice ? selectedDevice.osVer : ""),
+    "", "Serial No:", selectedDevice ? (selectedDevice.serialNo || selectedDevice.serial) : "",
+    "", "Firmware:", selectedDevice ? (selectedDevice.firmwareVer || "N/A") : "",
     "", "Package:",  pkg || "Not specified",
     "", "Screen Flow:", aiResult.screenFlow || "",
     "", "Relevant Logs:", aiResult.relevantLogs || "None",
@@ -241,18 +243,21 @@ function initDeviceHandlers() {
     selectedDevice = JSON.parse(opt.dataset.info);
 
     // Populate device info panel
+    function diRow(label, value) {
+      var row = document.createElement("div"); row.className = "device-info-row";
+      var l = document.createElement("span"); l.className = "di-label"; l.textContent = label;
+      var v = document.createElement("span"); v.className = "di-value"; v.textContent = value;
+      row.appendChild(l); row.appendChild(v); return row;
+    }
     deviceInfo.innerHTML = "";
-    var b    = document.createElement("b");
-    b.textContent = selectedDevice.brand + " " + selectedDevice.model;
-    var br1  = document.createElement("br");
-    var t1   = document.createTextNode("Android " + selectedDevice.osVer + " \u00B7 API " + selectedDevice.sdk);
-    var br2  = document.createElement("br");
-    var t2   = document.createTextNode(selectedDevice.resolution);
-    deviceInfo.appendChild(b); deviceInfo.appendChild(br1);
-    deviceInfo.appendChild(t1); deviceInfo.appendChild(br2);
-    deviceInfo.appendChild(t2);
+    var nameEl = document.createElement("div"); nameEl.className = "device-info-name";
+    nameEl.textContent = selectedDevice.brand + " " + selectedDevice.model;
+    deviceInfo.appendChild(nameEl);
+    deviceInfo.appendChild(diRow("Android", selectedDevice.osVer + " · API " + selectedDevice.sdk));
+    deviceInfo.appendChild(diRow("Resolution", selectedDevice.resolution));
+    deviceInfo.appendChild(diRow("S/N", selectedDevice.serialNo || selectedDevice.serial));
+    deviceInfo.appendChild(diRow("Firmware", selectedDevice.firmwareVer || "N/A"));
     deviceInfo.classList.remove("hidden");
-
     // Reset package state
     allPackages = [];
     pkgBadge.classList.add("hidden");
@@ -329,6 +334,8 @@ function initGenerateHandler() {
       document.getElementById("out-error").textContent    = aiResult.error    || "None";
       document.getElementById("out-device").textContent   = selectedDevice.brand + " " + selectedDevice.model;
       document.getElementById("out-os").textContent       = "Android " + selectedDevice.osVer;
+      document.getElementById("out-serial").textContent   = selectedDevice.serialNo || selectedDevice.serial;
+      document.getElementById("out-firmware").textContent = selectedDevice.firmwareVer || "N/A";
       document.getElementById("out-flow").textContent     = aiResult.screenFlow || "\u2014";
 
       // Package
